@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "padre.html" %}
+
+{% load static %}
+
+    {% block contenido2 %}
+        <h3 class="masthead-heading text-uppercase mb-0">Editar perfil</h3>
+    {% endblock %}
+
+    {% block contenido %}
+
+        <form action="" method="POST"> {% csrf_token %}
+            
+            <table>
+                {{ formulario.as_table }}
+            </table>
+
+        <div align="middle">
+            <br>
+                <button class="btn btn-success" type="submit">Editar</button>  
+            <br>
+        </div>
+
+        </form>
+
+        {% if esBlogger == True %}
+
+            <hr class="my-4" />
+            <p>¿Querés editar tu perfil de blogger? Click <a href="{% url 'EditarBlogger' blogger_id %}">acá</a>.</p>
+
+        {% else %}
+
+        <hr class="my-4" />
+        <p>¿Querés convertirte en blogger? Click <a href="{% url 'BloggerFormulario' %}">acá</a>.</p>
+
+        {% endif %}
+        
+    {% endblock %}

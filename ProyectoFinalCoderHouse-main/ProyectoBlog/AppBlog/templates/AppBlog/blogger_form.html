@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "padre.html" %}
+
+{% load static %}
+
+        {% block contenido2 %}
+            <h3 class="masthead-heading text-uppercase mb-0">Datos del blogger</h3>
+        {% endblock %}
+
+        {% block contenido %}
+
+              <form method="POST"> {% csrf_token %}
+
+                {{form.as_p}}
+
+                <input type="submit" value="Enviar"  />
+
+              </form>
+
+          
+
+            <a href="{% url 'BloggersLista' %}">Regresar</a>
+
+          
+         
+
+        {% endblock %}

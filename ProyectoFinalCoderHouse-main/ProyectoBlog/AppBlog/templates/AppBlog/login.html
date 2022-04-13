@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "padre.html" %}
+
+{% load static %}
+
+        {% block contenido2 %}
+
+            <h3 class="masthead-heading text-uppercase mb-0">Login</h3>
+
+        {% endblock %}  
+
+        {% block contenido %}
+
+            {% if mensaje %}
+
+                <h3 class="masthead-heading text-uppercase mb-0">{{mensaje|safe}}</h3>
+                <br>
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'Login' %}">Volver →</a></div>
+
+            {% else %}
+
+                <form action="" method="POST">
+
+                    {% csrf_token %}
+
+                    {{form.as_p}}
+
+                    <div align="middle">
+                        <button class="btn btn-success" type="submit">Login</button>
+                    </div>
+
+                </form>
+                <br>
+
+            {% endif %}
+    
+    <p>¿No sos usuario todavia? Click <a href="{% url 'Register' %}">acá</a> para unirte a la comunidad.</p>
+    
+        {% endblock %}

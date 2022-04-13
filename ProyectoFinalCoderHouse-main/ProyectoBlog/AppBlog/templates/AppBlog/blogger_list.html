@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "padre.html" %}
+
+{% load static %}
+
+        {% block contenido2 %}
+            <h3 class="masthead-heading text-uppercase mb-0">Bloggers</h3>
+        {% endblock %}
+
+        {% block contenido %}
+
+        {% if object_list %}
+
+          <ul>
+              {% for blogger in object_list %}
+
+                      <h5><a href="{% url 'BloggerDetalle' blogger.id %}"><i class="fas fa-user"></i> &nbsp &nbsp{{ blogger.usuario.username }}</a></h5>
+                      <br>
+
+              {% endfor %}
+
+          </ul>
+
+        {% else %}
+
+          <h5> Aún no se han registrado bloggers en el sitio <i class="far fa-sad-cry"></i> </h5>
+          <br>
+
+
+        {% endif %}
+
+        {% endblock %}
