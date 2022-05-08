@@ -1,9 +1,13 @@
 from django.urls import path
 from AppBlog import views
 from django.contrib.auth.views import LogoutView
-
 from . import views
+from django.urls import re_path
 
+urlpatterns= [
+  re_path(r'^detallePosteo/(?P<pk>\d+)/$', views.PosteoDetalle.as_view(), name='PosteoDetalle'),  
+  re_path(r'^detalleBlogger/(?P<pk>\d+)/$', views.BloggerDetalle.as_view(), name='BloggerDetalle'),
+              ]
 
 urlpatterns = [
     path('inicio', views.inicio, name='Inicio'),
@@ -12,7 +16,7 @@ urlpatterns = [
 
     # Posteos
     path('listaPosteos', views.listaPosteos, name='ListaPosteos'),
-    path(r'^detallePosteo/(?P<pk>\d+)$', views.PosteoDetalle.as_view(), name='PosteoDetalle'),
+  
     path('posteoFormulario', views.posteoFormulario, name='PosteoFormulario'),
     path('eliminarPosteo/<posteo_id>/', views.eliminarPosteo, name='EliminarPosteo'),
     path('confirmaEliminarPosteo/<posteo_id>/', views.confirmaEliminarPosteo, name='ConfirmaEliminarPosteo'),
@@ -20,7 +24,7 @@ urlpatterns = [
 
     # Bloggers
     path('blogger/list', views.BloggersLista.as_view(), name='BloggersLista'),
-    path(r'^detalleBlogger/(?P<pk>\d+)$', views.BloggerDetalle.as_view(), name='BloggerDetalle'),
+    
     path('bloggerFormulario', views.bloggerFormulario, name='BloggerFormulario'),
     path('eliminarBlogger/<blogger_id>/', views.eliminarBlogger, name='EliminarBlogger'),
     path('confirmaEliminarBlogger/<blogger_id>/', views.confirmaEliminarBlogger, name='ConfirmaEliminarBlogger'),
